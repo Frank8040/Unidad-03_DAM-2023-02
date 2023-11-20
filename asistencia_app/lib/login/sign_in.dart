@@ -1,49 +1,74 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-//keytool -list -v -alias androiddebugkey -keystore C:\Users\DTI-Laboratorios\.android\debug.keystore
+
+// Keytool command: keytool -list -v -alias androiddebugkey -keystore C:\Users\DTI-Laboratorios\.android\debug.keystore
+
 GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
-//bool _isLoggedIn = false;
 String? name;
 String? email;
-String imageUrl="";
-String error="";
+String imageUrl = "";
+String error = "";
 
-Future<String> signInWithGoogle() async {
+Future<String?> signInWithGoogle() async {
   try {
     await _googleSignIn.signIn();
   } catch (err) {
-    print(err);
-    error=err.toString();
-
-    print("Error al ingresar:${err.toString()} ");
-  }
-  final GoogleSignInAccount? user = _googleSignIn.currentUser;
-
-  if (user != null) {
-    // Checking if email and name is null
-    assert(user.email != null);
-    assert(user.displayName != null);
-    //assert(user.photoUrl != null);
-
-    name = user.displayName;
-    email = user.email;
-    imageUrl = user.photoUrl==null?"":user.photoUrl!;
-    print('signInWithGoogle succeeded: $user');
-    return '$user';
-  }
-  Fluttertoast.showToast(
-      msg: "Error al ingresar: $error",
+    print("Error durante el inicio de sesión: $err");
+    error = "Error durante el inicio de sesión: $err";
+    // You might want to handle or log the error more appropriately here
+    Fluttertoast.showToast(
+      msg: error,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
       backgroundColor: Colors.blue,
       textColor: Colors.white,
-      fontSize: 16.0);
-  return null!!;
+      fontSize: 16.0,
+    );
+    return null;
+  }
+
+  final GoogleSignInAccount? user = _googleSignIn.currentUser;
+
+  if (user != null) {
+    if (user.email != null && user.displayName != null) {
+      name = user.displayName;
+      email = user.email;
+      imageUrl = user.photoUrl ?? "";
+      print('Inicio de sesión con Google correctamente: $user');
+      return '$user';
+    } else {
+      error = "Datos de usuario incompletos";
+      Fluttertoast.showToast(
+        msg: error,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.blue,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      return null;
+    }
+  } else {
+    error = "La usuario es nulo";
+    Fluttertoast.showToast(
+      msg: error,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.blue,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+    return null;
+  }
 }
 
 Future<void> signOutGoogle() async {
   await _googleSignIn.signOut();
-  print("User Signed Out");
+  print("El usuario cerró sesión");
 }

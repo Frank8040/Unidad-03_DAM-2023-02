@@ -1,7 +1,28 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
+class UserModelo {
+  UserModelo({
+    required this.correo,
+  });
+
+  UserModelo.loginGoogle(this.correo);
+
+  late final String correo;
+
+  factory UserModelo.fromJson(Map<String, dynamic> json) {
+    return UserModelo(correo: json['correo']);
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+
+    data['correo'] = correo;
+
+    return data;
+  }
+}
+
 class UsuarioModelo {
   UsuarioModelo({
     required this.nombres,
@@ -15,8 +36,28 @@ class UsuarioModelo {
     required this.offlinex,
   });
 
-  UsuarioModelo.login(this.correo, this.password):nombres="", apellidos="",token="",dni="", perfilPrin="",estado="", offlinex="";
-  UsuarioModelo.loginDos(this.correo, this.password):nombres="", apellidos="";
+  UsuarioModelo.unlaunched();
+
+  UsuarioModelo.loginByEmail(this.correo)
+      : password = "",
+        nombres = "",
+        apellidos = "",
+        token = "",
+        dni = "",
+        perfilPrin = "",
+        estado = "",
+        offlinex = "";
+  UsuarioModelo.login(this.correo, this.password)
+      : nombres = "",
+        apellidos = "",
+        token = "",
+        dni = "",
+        perfilPrin = "",
+        estado = "",
+        offlinex = "";
+  UsuarioModelo.loginDos(this.correo, this.password)
+      : nombres = "",
+        apellidos = "";
 
   late final String nombres;
   late final String apellidos;
@@ -28,32 +69,46 @@ class UsuarioModelo {
   late final String estado;
   late final String offlinex;
 
-  factory UsuarioModelo.fromJson(Map<String, dynamic> json){
+  factory UsuarioModelo.fromJson(Map<String, dynamic> json) {
     return UsuarioModelo(
-      nombres : json['nombres'],
-      apellidos : json['apellidos'],
-      correo : json['correo'],
-      password : json['password'],
-      token : json['token'],
-      dni : json['dni'],
-      perfilPrin : json['perfilPrin'],
-      estado : json['estado'],
-      offlinex : json['offlinex'],
+      nombres: json['nombres'],
+      apellidos: json['apellidos'],
+      correo: json['correo'],
+      password: json['password'],
+      token: json['token'],
+      dni: json['dni'],
+      perfilPrin: json['perfilPrin'],
+      estado: json['estado'],
+      offlinex: json['offlinex'],
+    );
+  }
+
+  factory UsuarioModelo.fromJsonModelo(Map<String, dynamic> json) {
+    return UsuarioModelo(
+      nombres: json['nombres'],
+      apellidos: json['apellidos'],
+      correo: json['correo'],
+      password: json['password'],
+      token: json['token'],
+      dni: json['dni'],
+      perfilPrin: json['perfilPrin'],
+      estado: json['estado'],
+      offlinex: json['offlinex'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['nombres'] = nombres;
-    _data['apellidos'] = apellidos;
-    _data['correo'] = correo;
-    _data['password'] = password;
-    _data['token'] = token;
-    _data['dni'] = dni;
-    _data['perfilPrin'] = perfilPrin;
-    _data['estado'] = estado;
-    _data['offlinex'] = offlinex;
-    return _data;
+    final data = <String, dynamic>{};
+    data['nombres'] = nombres;
+    data['apellidos'] = apellidos;
+    data['correo'] = correo;
+    data['password'] = password;
+    data['token'] = token;
+    data['dni'] = dni;
+    data['perfilPrin'] = perfilPrin;
+    data['estado'] = estado;
+    data['offlinex'] = offlinex;
+    return data;
   }
 }
 
@@ -79,31 +134,33 @@ class RespUsuarioModelo {
   late final String estado;
   late final String offlinex;
 
-  factory RespUsuarioModelo.fromJson(Map<String, dynamic> json){
-  return RespUsuarioModelo(
-      id : json['id'],
-      nombres : json['nombres'],
-      apellidos : json['apellidos'],
-      correo : json['correo'],
-      token : json['token'],
-      dni : json['dni'],
-      perfilPrin : json['perfilPrin'],
-      estado : json['estado'],
-      offlinex : json['offlinex'],
-  );
+  factory RespUsuarioModelo.fromJson(Map<String, dynamic> json) {
+    return RespUsuarioModelo(
+      id: json['id'],
+      nombres: json['nombres'],
+      apellidos: json['apellidos'],
+      correo: json['correo'],
+      token: json['token'],
+      dni: json['dni'],
+      perfilPrin: json['perfilPrin'],
+      estado: json['estado'],
+      offlinex: json['offlinex'],
+    );
   }
 
+  get password => null;
+
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['nombres'] = nombres;
-    _data['apellidos'] = apellidos;
-    _data['correo'] = correo;
-    _data['token'] = token;
-    _data['dni'] = dni;
-    _data['perfilPrin'] = perfilPrin;
-    _data['estado'] = estado;
-    _data['offlinex'] = offlinex;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['nombres'] = nombres;
+    data['apellidos'] = apellidos;
+    data['correo'] = correo;
+    data['token'] = token;
+    data['dni'] = dni;
+    data['perfilPrin'] = perfilPrin;
+    data['estado'] = estado;
+    data['offlinex'] = offlinex;
+    return data;
   }
 }

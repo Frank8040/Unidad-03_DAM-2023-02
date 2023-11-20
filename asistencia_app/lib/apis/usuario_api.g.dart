@@ -13,7 +13,7 @@ class _UsuarioApi implements UsuarioApi {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://172.22.5.34:8080';
+    baseUrl ??= 'http://172.22.5.16:9090';
   }
 
   final Dio _dio;
@@ -36,6 +36,30 @@ class _UsuarioApi implements UsuarioApi {
             .compose(
               _dio.options,
               '/asis/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = RespUsuarioModelo.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<RespUsuarioModelo> loginByEmail(UsuarioModelo usuario) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(usuario.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RespUsuarioModelo>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/asis/loginByCorreo',
               queryParameters: queryParameters,
               data: _data,
             )

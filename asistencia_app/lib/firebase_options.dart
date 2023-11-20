@@ -44,38 +44,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyASqEy-sB3JzG8Nbv_xdHHEiaRgmFMp-1k',
-    appId: '1:400306804266:web:f942977fc4fa47b31a1553',
-    messagingSenderId: '400306804266',
-    projectId: 'loginmovil-5260e',
-    authDomain: 'loginmovil-5260e.firebaseapp.com',
-    storageBucket: 'loginmovil-5260e.appspot.com',
-    measurementId: 'G-0YQ6J3HQ76',
+    apiKey: 'AIzaSyAZPaWSVa8T64TGSvsvEPBP2MQfVFAVja8',
+    appId: '1:326831698138:web:3fba221d698b2e1e27f5e3',
+    messagingSenderId: '326831698138',
+    projectId: 'loginmovil-c3a75',
+    authDomain: 'loginmovil-c3a75.firebaseapp.com',
+    storageBucket: 'loginmovil-c3a75.appspot.com',
+    measurementId: 'G-408VKSNC5Y',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAeAe2scczlwQPvIdHthsWZs7BBFv7ai7U',
-    appId: '1:400306804266:android:89fab74626bd58f71a1553',
-    messagingSenderId: '400306804266',
-    projectId: 'loginmovil-5260e',
-    storageBucket: 'loginmovil-5260e.appspot.com',
+    apiKey: 'AIzaSyCrluJ2bHp7dVE4ReEy7ZU0H9BQYnphJz8',
+    appId: '1:326831698138:android:39ffc3c082a71c0b27f5e3',
+    messagingSenderId: '326831698138',
+    projectId: 'loginmovil-c3a75',
+    storageBucket: 'loginmovil-c3a75.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBZBXF7y1koW1ek1tFAKQieKcVQQYvSAoI',
-    appId: '1:400306804266:ios:889cfa25d89755de1a1553',
-    messagingSenderId: '400306804266',
-    projectId: 'loginmovil-5260e',
-    storageBucket: 'loginmovil-5260e.appspot.com',
+    apiKey: 'AIzaSyCD7yHxqjgf4MasJ6V7fSjR7v7QgyeEPyw',
+    appId: '1:326831698138:ios:b4cdde82b3d7852027f5e3',
+    messagingSenderId: '326831698138',
+    projectId: 'loginmovil-c3a75',
+    storageBucket: 'loginmovil-c3a75.appspot.com',
+    androidClientId: '326831698138-3uno3hocfrt81gvlhaf11gm83vf5blgt.apps.googleusercontent.com',
+    iosClientId: '326831698138-gktkj1val5rao6u763gsasgtkh0rju9v.apps.googleusercontent.com',
     iosBundleId: 'pe.edu.upeu.asistenciaApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBZBXF7y1koW1ek1tFAKQieKcVQQYvSAoI',
-    appId: '1:400306804266:ios:6f04f7261dc3cdf41a1553',
-    messagingSenderId: '400306804266',
-    projectId: 'loginmovil-5260e',
-    storageBucket: 'loginmovil-5260e.appspot.com',
+    apiKey: 'AIzaSyCD7yHxqjgf4MasJ6V7fSjR7v7QgyeEPyw',
+    appId: '1:326831698138:ios:0366c64f4606064027f5e3',
+    messagingSenderId: '326831698138',
+    projectId: 'loginmovil-c3a75',
+    storageBucket: 'loginmovil-c3a75.appspot.com',
+    androidClientId: '326831698138-3uno3hocfrt81gvlhaf11gm83vf5blgt.apps.googleusercontent.com',
+    iosClientId: '326831698138-hlseaeh9kkl9iptg41pi8mdgdbaf8lii.apps.googleusercontent.com',
     iosBundleId: 'pe.edu.upeu.asistenciaApp.RunnerTests',
   );
 }

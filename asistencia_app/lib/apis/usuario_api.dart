@@ -20,4 +20,7 @@ abstract class UsuarioApi {
   @POST("/asis/login") //davidmpx@upeu.edu.pe //D123456
   Future<RespUsuarioModelo> login(@Body() UsuarioModelo usuario);
 
+  @POST("/asis/loginByCorreo") //davidmpx@upeu.edu.pe //D123456
+  Future<RespUsuarioModelo> loginByEmail(@Body() UsuarioModelo usuario);
+
 }
