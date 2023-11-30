@@ -1,11 +1,11 @@
+// ignore_for_file: must_be_immutable
 
 import 'package:asistencia_app/modelo/ActividadModeloFire.dart';
 import 'package:flutter/material.dart';
 
 @immutable
 class AsistenciaxModeloFire {
-
-  late String id="";
+  late String id = "";
   late final String fecha;
   late final String horaReg;
   late final String latituda;
@@ -36,7 +36,7 @@ class AsistenciaxModeloFire {
   });
   AsistenciaxModeloFire.unlaunched();
 
-  AsistenciaxModeloFire.fromJson(Map<String, dynamic> json){
+  AsistenciaxModeloFire.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     fecha = json['fecha'];
     horaReg = json['horaReg'];
@@ -49,47 +49,42 @@ class AsistenciaxModeloFire {
     entsal = json['entsal'];
     subactasisId = json['subactasisId'];
     offlinex = json['offlinex'];
-    actividadId = json['actividadId']!=null? ActividadModeloFire.fromJsonModelo(json['actividadId']):ActividadModeloFire.unlaunched();
+    actividadId = json['actividadId'] != null
+        ? ActividadModeloFire.fromJsonModelo(json['actividadId'])
+        : ActividadModeloFire.unlaunched();
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['fecha'] = fecha;
-    _data['horaReg'] = horaReg;
-    _data['latituda'] = latituda;
-    _data['longituda'] = longituda;
-    _data['tipo'] = tipo;
-    _data['calificacion'] = calificacion;
-    _data['cui'] = cui;
-    _data['tipoCui'] = tipoCui;
-    _data['entsal'] = entsal;
-    _data['subactasisId'] = subactasisId;
-    _data['offlinex'] = offlinex;
-    //_data['actividadId'] = actividadId;
-    if (this.actividadId != null) {
-      _data['actividadId'] = this.actividadId.id;
-    }
-    return _data;
-  }
-
-
-  Map<String, dynamic> toMap(){
-    var data=Map<String, dynamic>();
-    data['id'] = this.id;
-    data['fecha'] = this.fecha;
-    data['horaReg'] = this.horaReg;
-    data['latituda'] = this.latituda;
-    data['longituda'] = this.longituda;
-    data['tipo'] = this.tipo;
-    data['calificacion'] = this.calificacion;
-    data['cui'] = this.cui;
-    data['tipoCui'] = this.tipoCui;
-    //data['actividad'] = this.actividad;
-    if (this.actividadId != null) {
-      data['actividadId'] = this.actividadId.id;
-    }
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['fecha'] = fecha;
+    data['horaReg'] = horaReg;
+    data['latituda'] = latituda;
+    data['longituda'] = longituda;
+    data['tipo'] = tipo;
+    data['calificacion'] = calificacion;
+    data['cui'] = cui;
+    data['tipoCui'] = tipoCui;
+    data['entsal'] = entsal;
+    data['subactasisId'] = subactasisId;
+    data['offlinex'] = offlinex;
+    //data['actividadId'] = actividadId;
+    data['actividadId'] = actividadId.id;
     return data;
   }
 
+  Map<String, dynamic> toMap() {
+    var data = <String, dynamic>{};
+    data['id'] = id;
+    data['fecha'] = fecha;
+    data['horaReg'] = horaReg;
+    data['latituda'] = latituda;
+    data['longituda'] = longituda;
+    data['tipo'] = tipo;
+    data['calificacion'] = calificacion;
+    data['cui'] = cui;
+    data['tipoCui'] = tipoCui;
+    data['actividadId'] = actividadId.id;
+    return data;
+  }
 }

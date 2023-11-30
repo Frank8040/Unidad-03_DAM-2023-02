@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   AppTheme._();
-  static  List<Color> colorOptions = [
-    Color(0xff99ff05),
-    Color(0xff6750a4),
+  static List<Color> colorOptions = [
+    const Color(0xff99ff05),
+    const Color(0xff6750a4),
     Colors.blue,
     Colors.teal,
     Colors.green,
@@ -12,7 +12,7 @@ class AppTheme {
     Colors.orange,
     Colors.pink
   ];
-  static   List<String> colorText = <String>[
+  static List<String> colorText = <String>[
     "M3 Baseline",
     "M3 BaselineD",
     "Blue",
@@ -35,23 +35,24 @@ class AppTheme {
     darkColorSchemeGreen
   ];
 
-
-  static  bool useMaterial3 = false;
+  static bool useMaterial3 = false;
   static bool useLightMode = true;
-  static  int colorSelected = 1;
+  static int colorSelected = 1;
 
-  static  ThemeData themeData=ThemeData(
+  static ThemeData themeData = ThemeData(
       colorSchemeSeed: AppTheme.colorOptions[AppTheme.colorSelected],
       useMaterial3: AppTheme.useMaterial3,
       brightness: AppTheme.useLightMode ? Brightness.light : Brightness.dark);
 
   static const Color grey = Color(0xFF3A5160);
   static const Color nearlyWhite = Color(0xFFFEFEFE);
-  static Color colorMenu=Color(0xFF3A5160);
+  static Color colorMenu = const Color(0xFF3A5160);
 
-  static ThemeData themeDataLight=ThemeData(useMaterial3: useMaterial3,
+  static ThemeData themeDataLight = ThemeData(
+      useMaterial3: useMaterial3,
       colorScheme: AppTheme.colorOptionsShemeL[AppTheme.colorSelected]);
-  static ThemeData themeDataDark=ThemeData(useMaterial3: useMaterial3,
+  static ThemeData themeDataDark = ThemeData(
+      useMaterial3: useMaterial3,
       colorScheme: AppTheme.colorOptionsShemeD[AppTheme.colorSelected]);
 
   static const lightColorSchemeGreen = ColorScheme(
@@ -121,7 +122,6 @@ class AppTheme {
     outlineVariant: Color(0xFF43483F),
     scrim: Color(0xFF000000),
   );
-
 
   static const lightColorSchemeBlue = ColorScheme(
     brightness: Brightness.light,
