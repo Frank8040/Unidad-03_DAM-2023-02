@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trabajo_final/dactilar/views/login_screen.dart';
-import 'package:trabajo_final/dactilar_02/views/auth_screen_click.dart';
+import 'package:trabajo_final/dactilar_01/views/auth_screen_click.dart';
+import 'package:trabajo_final/dactilar_02/home.dart';
 import 'package:trabajo_final/facial/locator.dart';
 import 'package:trabajo_final/facial/pages/submain.dart';
 
@@ -55,12 +55,12 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
+                    builder: (context) => const AuthScreenClick(),
                   ),
                 );
               },
               icon: const Icon(Icons.fingerprint),
-              label: const Text('Dactilar'),
+              label: const Text('Dactilar Prueba 01'),
             ),
             const SizedBox(height: 16.0),
             ElevatedButton.icon(
@@ -68,12 +68,13 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const AuthScreenClick(),
+                    builder: (context) => const MyHomePage(
+                        title: 'Autenticación de huellas dactilares'),
                   ),
                 );
               },
               icon: const Icon(Icons.fingerprint),
-              label: const Text('Dactilar Prueba'),
+              label: const Text('Dactilar Prueba 02'),
             ),
           ],
         ),

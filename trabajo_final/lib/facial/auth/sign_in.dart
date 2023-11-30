@@ -83,9 +83,12 @@ class _FaceCheckPageState extends State<FaceCheckPage> {
         await _mlService.predict(image, faces[0]);
 
         if (_mlService.person != null) {
-          setState(() {
-            _text = _mlService.person;
-          });
+          // Verifica si el widget está montado antes de llamar a setState
+          if (mounted) {
+            setState(() {
+              _text = _mlService.person;
+            });
+          }
 
           // Cancelar el temporizador anterior de manera segura
           _delayTimer?.cancel();
@@ -93,12 +96,14 @@ class _FaceCheckPageState extends State<FaceCheckPage> {
 
           // Agregar un nuevo temporizador de 5 segundos antes de realizar la navegación
           _delayTimer = Timer(const Duration(seconds: 3), () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const DashboardPage(),
-              ),
-            );
+            if (mounted) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DashboardPage(),
+                ),
+              );
+            }
           });
         }
       } else {

@@ -98,7 +98,8 @@ class _SignInPageState extends State<SignInPage> {
               Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: TextField(
-                    decoration: const InputDecoration(labelText: 'Nombre de Usuario'),
+                    decoration:
+                        const InputDecoration(labelText: 'Nombre de Usuario'),
                     autofocus: true,
                     controller: _nameController,
                   )),
@@ -122,7 +123,11 @@ class _SignInPageState extends State<SignInPage> {
     final predictArray = _mlService.predictArray;
     final user = {'name': name, 'predictArray': predictArray};
     _faceVectorService.addFaceVector(user);
-    Navigator.of(context).popUntil((route) => route.isFirst);
+    // Cerrar el modal
+    Navigator.pop(context);
+
+    // Volver a la página anterior
+    Navigator.pop(context);
   }
 
   @override

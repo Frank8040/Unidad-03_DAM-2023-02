@@ -2,28 +2,32 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:trabajo_final/dactilar_02/views/home_screen.dart';
+import 'package:trabajo_final/dactilar_01/views/home_screen.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
 
-class LocalAuthScreen extends StatefulWidget {
-  const LocalAuthScreen({Key? key}) : super(key: key);
+class AuthScreenClick extends StatefulWidget {
+  const AuthScreenClick({Key? key}) : super(key: key);
+
   @override
-  State<LocalAuthScreen> createState() => _LocalAuthScreenState();
+  State<AuthScreenClick> createState() => _LocalAuthScreenState();
 }
 
-class _LocalAuthScreenState extends State<LocalAuthScreen> {
+class _LocalAuthScreenState extends State<AuthScreenClick> {
   final LocalAuthentication auth = LocalAuthentication();
-  Future<void> authinticate() async {
+
+  Future<void> authenticate() async {
     try {
       final bool didAuthenticate = await auth.authenticate(
         localizedReason:
             'Por favor autentíquese para mostrar el saldo de la cuenta',
-        options: const AuthenticationOptions(useErrorDialogs: false),
       );
-      if (didAuthenticate == true) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+
+      if (didAuthenticate) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
       }
     } on PlatformException catch (e) {
       if (e.code == auth_error.notEnrolled) {
@@ -107,8 +111,8 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
           ),
           Center(
             child: ElevatedButton(
+              onPressed: authenticate,
               child: const Text('Mi saldo de billetera'),
-              onPressed: () => authinticate(),
             ),
           )
         ],
