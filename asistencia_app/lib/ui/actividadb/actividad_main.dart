@@ -5,9 +5,7 @@ import 'package:asistencia_app/bloc/actividad/actividad_bloc.dart';
 import 'package:asistencia_app/repository/ActividadRepository.dart';
 import 'package:asistencia_app/ui/actividadb/MyAppState.dart';
 import 'package:asistencia_app/apis/actividad_api.dart';
-//import 'package:asistencia_app/apis/asistencia_api.dart';
 import 'package:asistencia_app/comp/TabItem.dart';
-//import 'package:asistencia_app/modelo/AsistenciapaxModelo.dart';
 import 'package:asistencia_app/ui/actividadb/actividad_edit.dart';
 import 'package:asistencia_app/ui/actividadb/actividad_form.dart';
 import 'package:flutter/material.dart';
@@ -26,15 +24,6 @@ import 'package:share_plus/share_plus.dart';
 class MainActividadB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /*return Provider<ActividadApi>(
-      create: (_) => ActividadApi.create(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        themeMode: AppTheme.useLightMode ? ThemeMode.light : ThemeMode.dark,
-        theme: AppTheme.themeData,
-        home: ActividadUI(),
-      ),
-    );*/
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_)=>ActividadBloc(
@@ -63,8 +52,6 @@ class _ActividadUIState extends State<ActividadUI> {
   @override
   void initState() {
     super.initState();
-    //apiService = ApiCovid();
-    //api=Provider.of<PredictionApi>(context, listen: false).getPrediction();
     BlocProvider.of<ActividadBloc>(context).add(ListarActividadEvent());
     print("entro aqui");
   }
